@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KATALOG FILM</string>
+    <string name = "TAB_TV_SHOW">SIARAN TV</string>
+    <string name = "TAB_TERPOPULER">FILM</string>
+    <string name="change_language">BAHASA</string>
+    <string name = "wording_informasi">Informasi</string>
+    <string name="wording_otherMovie">Film Lainnya</string>
+    <string name="id_movie"></string>
+
+</resources>

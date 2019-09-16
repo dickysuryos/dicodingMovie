@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">映画カタログ</string>
+    <string name = "TAB_TV_SHOW">テレビ番組</string>
+    <string name = "TAB_TERPOPULER">最も人気のある</string>
+    <string name="change_language">バハサ</string>
+    <string name = "wording_informasi">情報</string>
+    <string name="wording_otherMovie">他の映画</string>
+</resources>

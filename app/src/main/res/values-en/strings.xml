@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name = "TAB_TV_SHOW">TV SHOW</string>
+    <string name = "TAB_TERPOPULER">MOVIES</string>
+    <string name="change_language">LANGUAGE</string>
+    <string name = "wording_informasi">Information</string>
+    <string name="wording_otherMovie">Other Movies</string>
+</resources>
