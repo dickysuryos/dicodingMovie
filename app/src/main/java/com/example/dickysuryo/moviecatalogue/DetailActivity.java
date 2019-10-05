@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +21,6 @@ import com.example.dickysuryo.moviecatalogue.Model.DetailPopular_Model;
 import com.example.dickysuryo.moviecatalogue.Model.MovieNewest_Model;
 import com.example.dickysuryo.moviecatalogue.Network.RetrofitClientInstance;
 
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,16 +28,13 @@ import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity {
 
-    ImageView image_header;
-    TextView txt_title,txt_description;
     LottieAnimationView animationView;
-    ProgressDialogFragment progressDialogFragment;
     int idMovie;
     RetrofitClientInstance retrofitClientInstance;
-    Call<MovieNewest_Model> calls;
     private static final String TAG = DetailActivity.class.getSimpleName();
     private RecyclerView recycle_view;
-    List<MovieNewest_Model.Result>  model;
+
+   DetailMovie_Model  model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +45,29 @@ public class DetailActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DetailActivity.this);
         recycle_view.setLayoutManager(linearLayoutManager);
 
+    if (savedInstanceState != null){
+    model = (DetailMovie_Model) savedInstanceState.getSerializable("detailMovie");
+    DetailAdapter customAdapter = new DetailAdapter(DetailActivity.this,model);
+    recycle_view.setAdapter(customAdapter);
+    stopAnimationLottie();
 
+    }else{
+    fetch_data();
+}
+
+
+
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        
+        outState.putSerializable("detailMovie",model);
+    }
+
+    public void fetch_data(){
         Bundle bundle = getIntent().getExtras();
         if (bundle.getParcelable("detailMovieNewest") != null){
             MovieNewest_Model.Result parcel = bundle.getParcelable("detailMovieNewest");
@@ -59,16 +79,7 @@ public class DetailActivity extends AppCompatActivity {
             DetailPopular_Model parcel = bundle.getParcelable("detailMovie");
             idMovie = parcel.getId();
 
-
         }
-
-//        FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-
-
-//        progressDialogFragment = new ProgressDialogFragment();
-//        progressDialogFragment.newInstane("title").show(getSupportFragmentManager(),"dialog");
-
         animationView.playAnimation();
         Call<DetailMovie_Model> call;
 
@@ -79,10 +90,9 @@ public class DetailActivity extends AppCompatActivity {
 //                final List<DetailMovie_Model> items = response.body();
 
                 DetailAdapter customAdapter = new DetailAdapter(DetailActivity.this,response.body());
+                model = response.body();
                 recycle_view.setAdapter(customAdapter);
-                animationView.clearAnimation();
-                animationView.setScaleX(0);
-                animationView.setScaleY(0);
+                stopAnimationLottie();
 
             }
 
@@ -94,11 +104,10 @@ public class DetailActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
-
-
-
+    public void stopAnimationLottie(){
+        animationView.clearAnimation();
+        animationView.setScaleX(0);
+        animationView.setScaleY(0);
+    }
 }

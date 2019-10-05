@@ -61,9 +61,7 @@ public class MovieListFragment extends Fragment {
             Constant.items = savedInstanceState.getParcelableArrayList("movies");
             ListAdapter_MovieNewest customAdapter = new ListAdapter_MovieNewest(getContext(), Constant.items);
             recycle_view.setAdapter(customAdapter);
-            animationView.clearAnimation();
-            animationView.setScaleX(0);
-            animationView.setScaleY(0);
+          stopAnimateLottie();
         } else {
             loadMovies();
         }
@@ -87,9 +85,7 @@ public class MovieListFragment extends Fragment {
                 ListAdapter_MovieNewest customAdapter = new ListAdapter_MovieNewest(getContext(), items);
                 recycle_view.setAdapter(customAdapter);
                 Constant.items = items;
-                animationView.clearAnimation();
-                animationView.setScaleX(0);
-                animationView.setScaleY(0);
+                stopAnimateLottie();
             }
 
             @Override
@@ -98,6 +94,11 @@ public class MovieListFragment extends Fragment {
 
             }
         });
+    }
+    public void stopAnimateLottie(){
+        animationView.clearAnimation();
+        animationView.setScaleX(0);
+        animationView.setScaleY(0);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.dickysuryo.moviecatalogue;
 
 import com.example.dickysuryo.moviecatalogue.Model.MovieNewest_Model;
+import com.example.dickysuryo.moviecatalogue.Model.MoviePopular_Model;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public class Constant {
     public static String KEY_LIST_POPULAR = "list_data_popular";
     public static String API_KEY = "44c09582cf533adac2fed1dccbc47c8b";
     public static List<MovieNewest_Model.Result> items;
+    public static List<MoviePopular_Model> itemsPopular;
 }

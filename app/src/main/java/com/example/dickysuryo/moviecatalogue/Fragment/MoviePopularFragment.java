@@ -61,11 +61,17 @@ public class MoviePopularFragment extends Fragment {
          linearLayoutManager = new LinearLayoutManager(getContext());
         recycle_view.setLayoutManager(linearLayoutManager);
         animationView = (LottieAnimationView)rootView.findViewById(R.id.progressAnimationView);
-        animationView.clearAnimation();
-        animationView.setScaleX(0);
-        animationView.setScaleY(0);
+
          fetch_data();
 
+         if (savedInstanceState != null) {
+             items = savedInstanceState.getParcelableArrayList(Constant.KEY_LIST_POPULAR);
+             ListAdapter_Movie customAdapter = new ListAdapter_Movie(getContext(),items);
+            recycle_view.setAdapter(customAdapter);
+            stopAnimateLottie();
+         } else {
+             fetch_data();
+         }
 
 
         return rootView;
@@ -73,6 +79,7 @@ public class MoviePopularFragment extends Fragment {
 
 
     public void fetch_data(){
+        animationView.playAnimation();
         call = retrofitClientInstance.getInstance().getApiInterface().getAllPopularMovie("44c09582cf533adac2fed1dccbc47c8b");
         call.enqueue(new Callback<MoviePopular_Model>() {
             @Override
@@ -80,9 +87,7 @@ public class MoviePopularFragment extends Fragment {
                  items = response.body().getResults();
                 ListAdapter_Movie customAdapter = new ListAdapter_Movie(getContext(),items);
                 recycle_view.setAdapter(customAdapter);
-                animationView.clearAnimation();
-                animationView.setScaleX(0);
-                animationView.setScaleY(0);
+              stopAnimateLottie();
             }
 
             @Override
@@ -90,5 +95,10 @@ public class MoviePopularFragment extends Fragment {
                 Log.e(TAG, t.toString());
             }
         });
+    }
+    public void stopAnimateLottie(){
+        animationView.clearAnimation();
+        animationView.setScaleX(0);
+        animationView.setScaleY(0);
     }
 }

@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">KATALOG FILM</string>
-    <string name = "TAB_TV_SHOW">TV SHOW </string>
-    <string name = "TAB_TERPOPULER">MOVIES</string>
+    <string name="TAB_TV_SHOW">TV SHOW </string>
+    <string name="TAB_TERPOPULER">MOVIES</string>
     <string name="change_language">BAHASA</string>
-    <string name = "wording_informasi">Information</string>
+    <string name="wording_informasi">Information</string>
     <string name="wording_otherMovie">Other Movies</string>
     <string name="id_movie"></string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
