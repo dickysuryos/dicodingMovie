@@ -1,14 +1,10 @@
 package com.example.dickysuryo.moviecatalogue.Network;
+
 import com.example.dickysuryo.moviecatalogue.Constant;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-
-    import retrofit2.Retrofit;
-    import retrofit2.converter.gson.GsonConverterFactory;
-
-
-    public class RetrofitClientInstance {
+public class RetrofitClientInstance {
     private static RetrofitClientInstance instance = null;
     private static Retrofit retrofit;
     private ApiInterface apiInterface;
@@ -23,16 +19,17 @@ import com.google.gson.GsonBuilder;
         apiInterface = retrofit.create(ApiInterface.class);
     }
 
-    public  static RetrofitClientInstance getInstance(){
+    public static RetrofitClientInstance getInstance() {
         if (instance == null)
             instance = new RetrofitClientInstance();
 
         return instance;
 
     }
-        public ApiInterface getApiInterface() {
+
+    public ApiInterface getApiInterface() {
         return apiInterface;
     }
 
-    }
+}
 
