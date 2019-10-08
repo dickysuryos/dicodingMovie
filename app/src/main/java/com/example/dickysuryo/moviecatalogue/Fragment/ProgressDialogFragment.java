@@ -1,19 +1,16 @@
 package com.example.dickysuryo.moviecatalogue.Fragment;
 
-import android.app.FragmentTransaction;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.example.dickysuryo.moviecatalogue.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.dickysuryo.moviecatalogue.R;
 
 public class ProgressDialogFragment extends DialogFragment {
    String mTitle;

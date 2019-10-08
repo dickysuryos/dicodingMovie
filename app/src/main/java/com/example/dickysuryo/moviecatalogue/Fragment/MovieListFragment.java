@@ -1,18 +1,16 @@
 package com.example.dickysuryo.moviecatalogue.Fragment;
 
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.dickysuryo.moviecatalogue.Adapter.ListAdapter_MovieNewest;
@@ -49,19 +47,19 @@ public class MovieListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie_list, container, false);
 
-        recycle_view = (RecyclerView) rootView.findViewById(R.id.recycle_view);
+        recycle_view = rootView.findViewById(R.id.recycle_view);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recycle_view.setLayoutManager(linearLayoutManager);
 
-        animationView = (LottieAnimationView) rootView.findViewById(R.id.progressAnimationView);
+        animationView = rootView.findViewById(R.id.progressAnimationView);
 
 
         if (savedInstanceState != null) {
             Constant.items = savedInstanceState.getParcelableArrayList("movies");
             ListAdapter_MovieNewest customAdapter = new ListAdapter_MovieNewest(getContext(), Constant.items);
             recycle_view.setAdapter(customAdapter);
-          stopAnimateLottie();
+            stopAnimateLottie();
         } else {
             loadMovies();
         }
@@ -95,7 +93,8 @@ public class MovieListFragment extends Fragment {
             }
         });
     }
-    public void stopAnimateLottie(){
+
+    public void stopAnimateLottie() {
         animationView.clearAnimation();
         animationView.setScaleX(0);
         animationView.setScaleY(0);

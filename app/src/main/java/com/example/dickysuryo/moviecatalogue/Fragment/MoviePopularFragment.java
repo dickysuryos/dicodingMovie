@@ -2,17 +2,16 @@ package com.example.dickysuryo.moviecatalogue.Fragment;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.dickysuryo.moviecatalogue.Adapter.ListAdapter_Movie;
@@ -57,10 +56,10 @@ public class MoviePopularFragment extends Fragment {
                              Bundle savedInstanceState) {
                 // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_movie_popular, container, false);
-        recycle_view = (RecyclerView) rootView.findViewById(R.id.recycle_view);
+        recycle_view = rootView.findViewById(R.id.recycle_view);
          linearLayoutManager = new LinearLayoutManager(getContext());
         recycle_view.setLayoutManager(linearLayoutManager);
-        animationView = (LottieAnimationView)rootView.findViewById(R.id.progressAnimationView);
+        animationView = rootView.findViewById(R.id.progressAnimationView);
 
          fetch_data();
 
